@@ -19,6 +19,15 @@ namespace WatchPontoWeb
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                        "~/Scripts/knockout-3.1.0.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datasources").Include(
+                        "~/Scripts/datasources/*DataSource.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/viewmodels").Include(
+                        "~/Scripts/viewmodels/*ViewModel.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));

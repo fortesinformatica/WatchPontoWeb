@@ -1,17 +1,11 @@
 ﻿@using WatchPontoWeb.Models
-@model LoginViewModel
-@{
-    ViewBag.Title = "Log in";
-}
+@model FiltroExtrato
 
-<h2>@ViewBag.Title.</h2>
 <div class="row">
     <div class="col-md-12">
         <section id="loginForm">
             <form class="form-horizontal" method="post" role="form" novalidate="novalidate">
                 @Html.AntiForgeryToken()
-                <h4>Informe o PIS</h4>
-                <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.PIS, new { @class = "col-md-2 control-label" })
@@ -20,20 +14,19 @@
                         @Html.ValidationMessageFor(m => m.PIS, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                @*<div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Entrar" class="btn btn-default" />
+                        <input type="submit" value="Consultar" class="btn btn-default" />
                     </div>
                 </div>
             </form>
         </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Extrato de Ponto</h2>
     </div>
 </div>
 
