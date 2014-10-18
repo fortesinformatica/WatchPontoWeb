@@ -18,14 +18,14 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.DataInicio, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.DataInicio, new { @class = "form-control", data_bind="value: DataInicio" })
+                        @Html.TextBoxFor(m => m.DataInicio, new { @class = "form-control date-format", data_bind = "value: DataInicio" })
                         @Html.ValidationMessageFor(m => m.DataInicio, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.DataFim, new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.DataFim, new { @class = "form-control", data_bind = "value: DataFim" })
+                        @Html.TextBoxFor(m => m.DataFim, new { @class = "form-control date-format", data_bind = "value: DataFim" })
                         @Html.ValidationMessageFor(m => m.DataFim, "", new { @class = "text-danger" })
                     </div>
                 </div>

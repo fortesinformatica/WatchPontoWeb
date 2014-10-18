@@ -11,8 +11,8 @@ DefaultDataSource.prototype.getExtrato = function (pis, dataInicio, dataFim) {
     }
 
     //var url = "/api/Ocorrencias/{pis}/{DataInicio}/{DataFim}".replace("{pis}", pis)
-    //            .replace("{DataInicio}", dataInicio.toLocaleDateString("pt-BR"))
-    //            .replace("{DataFim}", dataFim.toLocaleDateString("pt-BR"));
+    //            .replace("{DataInicio}", moment(dataInicio, "DD/MM/YYYY").format("YYYY-MM-DD"))
+    //            .replace("{DataFim}", moment(dataFim, "DD/MM/YYYY").format("YYYY-MM-DD"));
     var url = "/api/DataSource/Extrato/0";
 
     $.getJSON(url, function(data) {
