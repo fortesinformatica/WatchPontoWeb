@@ -3,9 +3,49 @@
 
 <div class="row">
     <div class="col-md-12">
+        <h2>Registro Manual de Ponto</h2>
+        <section id="lancamento-manual-form">
+            <form id="lancamento-manual-form-post" class=" form-horizontal" method="post" role="form" novalidate="novalidate">
+                <div class="form-group">
+                    <label for="pis2" class="col-md-2 control-label">PIS</label>
+                    <div class="col-md-10">
+                        <input type="text" id="pis2" class="form-control" data-bind="value: PIS" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="dtReg" class="col-md-2 control-label">Data da Ocorrência</label>
+                    <div class="col-md-10">
+                        <input type="text" id="dtReg" class="form-control date-format" data-bind="value: DtRegistro" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Tipo" class="col-md-2 control-label">Tipo</label>
+                    <div class="col-md-10">
+                        <select id="Tipo" class="form-control" data-bind="options: optionsTipo, optionsText: 'texto' ,optionsValue: 'valor', value:Tipo"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="justificativa" class="col-md-2 control-label">Justificativa</label>
+                    <div class="col-md-10">
+                        <textarea id="justificativa" class="form-control" data-bind="value: Justificativa"></textarea>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Enviar" class="btn btn-default" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <h2>Filtros</h2>
-        <section id="loginForm">
-            <form class="form-horizontal" method="post" role="form" novalidate="novalidate">
+        <section id="extrato-form">
+            <form id="extrato-form-get" class="form-horizontal" method="post" role="form" novalidate="novalidate">
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">

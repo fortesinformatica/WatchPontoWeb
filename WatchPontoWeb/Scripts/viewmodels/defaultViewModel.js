@@ -15,10 +15,10 @@
         defaultData().dadosExtrato(dados);
     });
 
-    ko.applyBindings(filtroExtrato, $("#loginForm")[0]);
+    ko.applyBindings(filtroExtrato, $("#extrato-form")[0]);
     ko.applyBindings(defaultData, $("#extrato-ponto")[0]);
 
-    $("form").submit(function () {
+    $("#extrato-form-get").submit(function () {
         dataSource.getExtrato(filtroExtrato.PIS(), filtroExtrato.DataInicio(), filtroExtrato.DataFim());
 
         return false;
