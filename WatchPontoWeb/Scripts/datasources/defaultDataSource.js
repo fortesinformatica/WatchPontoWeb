@@ -13,7 +13,7 @@ DefaultDataSource.prototype.getExtrato = function (pis, dataInicio, dataFim) {
     //var urlExtrato = "http://fortesponto.azurewebsites.net/api/Ocorrencias/{pis}/{DataInicio}/{DataFim}".replace("{pis}", pis)
     //            .replace("{DataInicio}", moment(dataInicio, "DD/MM/YYYY").format("YYYY-MM-DD"))
     //            .replace("{DataFim}", moment(dataFim, "DD/MM/YYYY").format("YYYY-MM-DD"));
-    var filtro = pis + "|" + moment(dataInicio, "DD/MM/YYYY").format("YYYY-MM-DD") + "|" + moment(dataFim, "DD/MM/YYYY").format("YYYY-MM-DD");
+    var filtro = pis.trim() + "|" + moment(dataInicio, "DD/MM/YYYY").format("YYYY-MM-DD").trim() + "|" + moment(dataFim, "DD/MM/YYYY").format("YYYY-MM-DD").trim();
     var urlExtrato = "/api/DataSource/Extrato/0?filtro=" + filtro;
 
     $.getJSON(
