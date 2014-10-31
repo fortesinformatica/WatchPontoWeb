@@ -14,9 +14,9 @@ namespace WatchPontoWeb.Controllers
         [HttpGet]
         public HttpResponseMessage Extrato([FromUri] string filtro)
         {
-            var pis = filtro.Split('|')[0];
-            var dataInicial = filtro.Split('|')[1];
-            var dataFinal = filtro.Split('|')[2];
+            var pis = filtro.Split('|')[0].Trim();
+            var dataInicial = filtro.Split('|')[1].Trim();
+            var dataFinal = filtro.Split('|')[2].Trim();
             object dados = new {};
 
             using (var client = new HttpClient())
