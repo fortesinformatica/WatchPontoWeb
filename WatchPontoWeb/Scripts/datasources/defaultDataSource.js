@@ -10,32 +10,36 @@ DefaultDataSource.prototype.getExtrato = function (pis, dataInicio, dataFim) {
         return;
     }
 
-    //var urlExtrato = "/api/Ocorrencias/{pis}/{DataInicio}/{DataFim}".replace("{pis}", pis)
+    //var urlExtrato = "http://fortesponto.azurewebsites.net/api/Ocorrencias/{pis}/{DataInicio}/{DataFim}".replace("{pis}", pis)
     //            .replace("{DataInicio}", moment(dataInicio, "DD/MM/YYYY").format("YYYY-MM-DD"))
     //            .replace("{DataFim}", moment(dataFim, "DD/MM/YYYY").format("YYYY-MM-DD"));
-    var urlExtrato = "/api/DataSource/Extrato/0";
+    var filtro = pis + "|" + moment(dataInicio, "DD/MM/YYYY").format("YYYY-MM-DD") + "|" + moment(dataFim, "DD/MM/YYYY").format("YYYY-MM-DD");
+    var urlExtrato = "/api/DataSource/Extrato/0?filtro=" + filtro;
 
-    $.getJSON(urlExtrato, function (data) {
-        var dados = [];
+    $.getJSON(
+        urlExtrato,
+        function (data) {
+            var dados = [];
 
-        if (data && data.length) {
-            dados = $.map(data, function (ocorrencia) {
-                return {
-                    Dia: ko.observable(new Date(ocorrencia.Dia).toLocaleDateString("pt-BR")),
-                    Batidas: ko.observableArray($.map(ocorrencia.Batidas, function (batida) {
-                        return {
-                            Tipo: ko.observable(batida.Tipo),
-                            Motivo: ko.observable(batida.Motivo || null),
-                            Hora: ko.observable(batida.Hora),
-                        };
-                    })),
-                    Quebras: ko.observableArray(ocorrencia.Quebras)
-                }
-            });
+            if (data && data.length) {
+                dados = $.map(data, function (ocorrencia) {
+                    return {
+                        Dia: ko.observable(ocorrencia.Dia),
+                        Batidas: ko.observableArray($.map(ocorrencia.Batidas, function (batida) {
+                            return {
+                                Tipo: ko.observable(batida.Tipo),
+                                Motivo: ko.observable(batida.Motivo || null),
+                                Hora: ko.observable(batida.Hora),
+                            };
+                        })),
+                        Quebras: ko.observableArray(ocorrencia.Quebras)
+                    }
+                });
+            }
+
+            self.aoConsultarExtrato.notifySubscribers(dados);
         }
-
-        self.aoConsultarExtrato.notifySubscribers(dados);
-    }).fail(function () {
+    ).fail(function () {
         self.aoConsultarExtrato.notifySubscribers([]);
     });
 }

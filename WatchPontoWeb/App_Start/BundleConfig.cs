@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace WatchPontoWeb
 {
@@ -42,7 +41,9 @@ namespace WatchPontoWeb
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
+#if !DEBUG
             BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }
